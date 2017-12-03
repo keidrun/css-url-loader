@@ -5,7 +5,7 @@ Webpack loader to transform URLs to other URLs on CSS.
 ## Description
 
 Transform URLs to new URLs in `url()` on your CSS. You can change a relative url
-to an absolute url, or you can change an old url to an new url that you want.
+to an absolute url, or you can change an old url to a new url that you want.
 
 ## Install
 
@@ -31,7 +31,7 @@ module.exports = {
           use: [
             'css-loader',
             {
-              loader: 'css-exact-url-loader',
+              loader: 'css-url-loader',
               query: {
                 from: '/assets/',
                 to: 'https://domain/assets/'
@@ -66,7 +66,7 @@ module.exports = {
           use: [
             'css-loader',
             {
-              loader: 'css-exact-url-loader',
+              loader: 'css-url-loader',
               query: {
                 from: '/assets/',
                 to: '/dir/assets/'
