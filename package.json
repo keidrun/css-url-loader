@@ -1,0 +1,33 @@
+{
+  "name": "css-exact-url-loader",
+  "version": "0.0.0",
+  "description": "Webpack plugin to exact url on CSS.",
+  "main": "index.js",
+  "keywords": [
+    "webpack",
+    "loader",
+    "webpack-loader",
+    "css",
+    "url",
+    "exact-url"
+  ],
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": "git@github.com:keidrun/css-exact-url-loader.git",
+  "author": "Keid",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "mocha": "^4.0.1",
+    "webpack": "^3.9.1"
+  },
+  "peerDependencies": {
+    "webpack": ">=3.9.1"
+  },
+  "dependencies": {
+    "loader-utils": "^1.1.0"
+  }
+}

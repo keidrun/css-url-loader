@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "allowSyntheticDefaultImports": false
+  },
+  "exclude": ["node_modules", "coverage", "dist"]
+}
