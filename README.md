@@ -1,6 +1,6 @@
 # css-exact-url-loader [![NPM version][npm-image]][npm-url] [![Dependency Status][depstat-image]][depstat-url]
 
-Webpack plugin to exact url on CSS.
+Webpack plugin to transform URLs to exact URLs on CSS.
 
 ## Description
 
@@ -81,6 +81,14 @@ module.exports = {
     ...
   ],
 ```
+
+## Options
+
+| Option | Description                    | Must? |
+| ------ | :----------------------------- | :---: |
+| from   | path in url()                  |   Y   |
+| to     | transformed path               |   Y   |
+| env    | execute when only 'production' |   N   |
 
 [npm-url]: https://npmjs.org/package/css-exact-url-loader
 [npm-image]: https://badge.fury.io/js/css-exact-url-loader.svg

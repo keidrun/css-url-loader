@@ -1,7 +1,7 @@
 {
   "name": "css-exact-url-loader",
-  "version": "0.0.0",
-  "description": "Webpack plugin to exact url on CSS.",
+  "version": "0.0.1",
+  "description": "Webpack plugin to transform URLs to exact URLs on CSS.",
   "main": "index.js",
   "keywords": [
     "webpack",
