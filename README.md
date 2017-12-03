@@ -1,20 +1,22 @@
-# css-exact-url-loader [![NPM version][npm-image]][npm-url] [![Dependency Status][depstat-image]][depstat-url]
+# css-url-loader [![NPM version][npm-image]][npm-url] [![Dependency Status][depstat-image]][depstat-url]
 
-Webpack plugin to transform URLs to exact URLs on CSS.
+Webpack loader to transform URLs to other URLs on CSS.
 
 ## Description
 
-Transform `url()` on your CSS.
+Transform URLs to new URLs in `url()` on your CSS. You can change a relative url
+to an absolute url, or you can change an old url to an new url that you want.
 
 ## Install
 
 ```bash
-yarn add --dev css-exact-url-loader
+yarn add --dev css-url-loader
 ```
 
 ## Usage
 
-A example of `webpack.config.js` is below.
+First, if you want to trasform `url(/assets/...)` to
+`url(https://domain/assets/...)`, the `webpack.config.js` is below.
 
 ```javascript
 module.exports = {
@@ -48,7 +50,8 @@ module.exports = {
   ],
 ```
 
-Other example of `webpack.config.js` is below.
+Next, if you want to trasform `url(/assets/...)` to `url(/dir/assets/...)`, the
+`webpack.config.js` is below.
 
 ```javascript
 module.exports = {
@@ -86,11 +89,11 @@ module.exports = {
 
 | Option | Description                    | Must? |
 | ------ | :----------------------------- | :---: |
-| from   | path in url()                  |   Y   |
-| to     | transformed path               |   Y   |
+| from   | original url in url()          |   Y   |
+| to     | transformed url                |   Y   |
 | env    | execute when only 'production' |   N   |
 
-[npm-url]: https://npmjs.org/package/css-exact-url-loader
-[npm-image]: https://badge.fury.io/js/css-exact-url-loader.svg
-[depstat-url]: https://david-dm.org/keidrun/css-exact-url-loader
-[depstat-image]: https://david-dm.org/keidrun/css-exact-url-loader.svg
+[npm-url]: https://npmjs.org/package/css-url-loader
+[npm-image]: https://badge.fury.io/js/css-url-loader.svg
+[depstat-url]: https://david-dm.org/keidrun/css-url-loader
+[depstat-image]: https://david-dm.org/keidrun/css-url-loader.svg
