@@ -12,6 +12,13 @@
   background-repeat: no-repeat;
 }
 
+.something3 {
+  padding: 1rem;
+  background-color: #fff;
+  background-image: url( /assets/something.jpg);
+  background-repeat: no-repeat;
+}
+
 .anything1 {
   margin: 1rem;
   background-color: #000;
@@ -31,5 +38,16 @@
       rgba(12, 32, 555, 0.5)
     ),
     url('/assets/anything.jpg');
+  background-repeat: no-repeat;
+}
+
+.anything3 {
+  margin: 1rem;
+  background-color: #000;
+  background-image: linear-gradient(
+      rgba(12, 32, 555, 0.5),
+      rgba(12, 32, 555, 0.5)
+    ),
+    url( '/assets/anything.jpg');
   background-repeat: no-repeat;
 }

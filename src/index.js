@@ -39,9 +39,9 @@ function processOptions(source, options) {
 
   const escapedFromURL = fromURL.replace(/\//g, '\\/');
   const newSource = source
-    .replace(new RegExp('url\\(' + escapedFromURL, 'g'), 'url(' + toURL)
-    .replace(new RegExp("url\\('" + escapedFromURL, 'g'), "url('" + toURL)
-    .replace(new RegExp('url\\("' + escapedFromURL, 'g'), 'url("' + toURL);
+    .replace(new RegExp('url\\(\\s*' + escapedFromURL, 'g'), 'url(' + toURL)
+    .replace(new RegExp("url\\(\\s*'" + escapedFromURL, 'g'), "url('" + toURL)
+    .replace(new RegExp('url\\(\\s*"' + escapedFromURL, 'g'), 'url("' + toURL);
 
   return newSource;
 }

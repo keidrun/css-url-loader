@@ -4,7 +4,7 @@ Webpack loader to transform URLs to other URLs on CSS.
 
 ## Description
 
-Transform URLs to new URLs in `url()` on your CSS. You can change a relative url
+Transform URLs to other URLs in `url()` on your CSS. You can change a relative url
 to an absolute url, or you can change an old url to a new url that you want.
 
 ## Install
