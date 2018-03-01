@@ -1,4 +1,4 @@
-# css-url-loader [![NPM version][npm-image]][npm-url] [![Dependency Status][depstat-image]][depstat-url]
+# css-url-loader [![NPM version][npm-image]][npm-url] [![npm module downloads][npm-downloads-image]][npm-downloads-url] [![Dependency Status][depstat-image]][depstat-url] [![License: MIT][license-image]][license-url]
 
 Webpack loader to transform URLs to other URLs on CSS.
 
@@ -8,6 +8,12 @@ Transform URLs to other URLs in `url()` on your CSS. You can change a relative u
 to an absolute url, or you can change an old url to a new url that you want.
 
 ## Install
+
+```bash
+npm install --save-dev css-url-loader
+```
+
+Or
 
 ```bash
 yarn add --dev css-url-loader
@@ -95,5 +101,9 @@ module.exports = {
 
 [npm-url]: https://npmjs.org/package/css-url-loader
 [npm-image]: https://badge.fury.io/js/css-url-loader.svg
+[npm-downloads-url]: https://npmjs.org/package/css-url-loader
+[npm-downloads-image]: https://img.shields.io/npm/dt/css-url-loader.svg
 [depstat-url]: https://david-dm.org/keidrun/css-url-loader
 [depstat-image]: https://david-dm.org/keidrun/css-url-loader.svg
+[license-url]: https://opensource.org/licenses/MIT
+[license-image]: https://img.shields.io/badge/License-MIT-yellow.svg
