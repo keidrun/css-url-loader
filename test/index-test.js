@@ -98,4 +98,18 @@ describe('CSS-Exact-URL-Loader test', () => {
       (error, stats) => happyPathCheck(done, error, stats, "'/dir/assets/")
     );
   });
+
+  it('should not transform any url because of env miss match', done => {
+    webpack(
+      getTestWebPackConfig({
+        loader: '__this-loader',
+        query: {
+          from: '/assets/',
+          to: '/dir/assets/',
+          env: 'development'
+        }
+      }),
+      (error, stats) => happyPathCheck(done, error, stats, "/assets/")
+    );
+  });
 });

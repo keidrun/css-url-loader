@@ -1,7 +1,7 @@
 const loaderUtils = require('loader-utils');
 const { URL } = require('url');
 
-const isURLFunc = str => {
+const isURLInstance = str => {
   try {
     new URL(str);
     return true;
@@ -11,10 +11,10 @@ const isURLFunc = str => {
 };
 const isURL = str => {
   if (
-    isURLFunc(str) ||
-    isURLFunc('http:/' + str) ||
-    isURLFunc('http://' + str) ||
-    isURLFunc('http:/' + str.replace('./', '/'))
+    isURLInstance(str) ||
+    isURLInstance('http:/' + str) ||
+    isURLInstance('http://' + str) ||
+    isURLInstance('http:/' + str.replace('./', '/'))
   ) {
     return true;
   } else {
@@ -26,8 +26,9 @@ function processOptions(source, options) {
   const fromURL = options.from;
   const toURL = options.to;
   const env = options.env || 'production';
+  const NODE_ENV = process.env.NODE_ENV || 'production'
 
-  if (env !== 'production') {
+  if (NODE_ENV !== env) {
     return source;
   }
 
