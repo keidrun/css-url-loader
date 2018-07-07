@@ -108,7 +108,7 @@ module.exports = {
               query: {
                 from: '/assets/',
                 to: '/tmp/assets/',
-                env: 'development
+                env: 'development'
               }
             }
           ],
