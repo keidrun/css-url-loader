@@ -3,5 +3,9 @@
     "target": "ES6",
     "allowSyntheticDefaultImports": false
   },
-  "exclude": ["node_modules", "coverage", "dist"]
+  "exclude": [
+    "node_modules",
+    "coverage",
+    "dist"
+  ]
 }

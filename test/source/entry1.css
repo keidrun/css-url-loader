@@ -1,0 +1,6 @@
+.class-name {
+  padding: 1rem;
+  background-color: #fff;
+  background-image: url(/assets/something.jpg);
+  background-repeat: no-repeat;
+}

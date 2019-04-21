@@ -1,6 +1,4 @@
 yarn-debug.log*
 yarn-error.log*
 coverage
-/node_modules/*
-!node_modules/__this-loader/
-test/output/
+node_modules/

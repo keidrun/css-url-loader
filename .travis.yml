@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - 11
+  - 10
+  - 8
+
+deploy:
+  provider: npm
+  email: "$NPM_EMAIL"
+  api_key: "$NPM_TOKEN"
+  on:
+    tags: true
+
+after_deploy:
+  - test ! -e /home/travis/.npm/_logs ; TRAVIS_TEST_RESULT=$?
