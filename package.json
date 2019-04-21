@@ -1,6 +1,6 @@
 {
   "name": "css-url-loader",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "Webpack loader to transform URLs to other URLs in CSS.",
   "main": "src/loader.js",
   "engines": {
