@@ -2,10 +2,13 @@
   "name": "css-url-loader",
   "version": "2.0.0",
   "description": "Webpack loader to transform URLs to other URLs in CSS.",
-  "main": "src/loader.js",
+  "main": "build/loader.js",
   "engines": {
     "node": ">=8.0.0"
   },
+  "repository": "git@github.com:keidrun/css-url-loader.git",
+  "author": "keidrun",
+  "license": "MIT",
   "keywords": [
     "css-url-loader",
     "webpack",
@@ -34,12 +37,18 @@
     ]
   },
   "scripts": {
-    "test": "jest --detectOpenHandles"
+    "clean": "rimraf build",
+    "prebuild": "yarn clean",
+    "build": "babel src --out-dir build",
+    "test": "jest --detectOpenHandles --coverage",
+    "watch": "jest --watchAll --coverage"
   },
-  "repository": "git@github.com:keidrun/css-url-loader.git",
-  "author": "keidrun",
-  "license": "MIT",
+  "dependencies": {
+    "loader-utils": "^1.2.3",
+    "schema-utils": "^1.0.0"
+  },
   "devDependencies": {
+    "@babel/cli": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
     "babel-jest": "^24.7.1",
     "css-loader": "^2.1.1",
@@ -54,11 +63,8 @@
     "lint-staged": "^8.1.5",
     "memory-fs": "^0.4.1",
     "prettier": "^1.14.3",
+    "rimraf": "^2.6.3",
     "webpack": "^4.30.0"
-  },
-  "dependencies": {
-    "loader-utils": "^1.2.3",
-    "schema-utils": "^1.0.0"
   },
   "peerDependencies": {
     "webpack": "^4.30.0"

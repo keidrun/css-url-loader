@@ -1,11 +1,13 @@
 language: node_js
 node_js:
-  - 11
-  - 10
   - 8
+
+before_deploy:
+  - yarn build
 
 deploy:
   provider: npm
+  skip_cleanup: true
   email: "$NPM_EMAIL"
   api_key: "$NPM_TOKEN"
   on:
