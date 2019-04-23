@@ -1,10 +1,11 @@
 import compiler from './compiler'
 
-describe('loader tests', () => {
+describe('loader', () => {
   afterEach(() => {
     process.env.NODE_ENV = undefined
     process.env.WEBPACK_MODE = undefined
   })
+
   test('should transform relative url to absolute url with production env', async () => {
     const fixture = 'entry1.css'
     const options = {
@@ -191,5 +192,92 @@ describe('loader tests', () => {
     const output = stats.toJson().modules[0].source
 
     expect(output).toContain('/dir/assets/')
+  })
+
+  test('should transform old url to new url when urls use double quotes', async () => {
+    const fixture = 'entry5.css'
+    const options = {
+      from: '/assets/',
+      to: '/dir/assets/',
+    }
+    process.env.NODE_ENV = 'production'
+    // process.env.WEBPACK_MODE = 'production'
+
+    const stats = await compiler(fixture, options)
+    const output = stats.toJson().modules[0].source
+
+    expect(output).toContain('/dir/assets/')
+  })
+
+  test('should not transform urls when both env and mode are undefined', async () => {
+    const fixture = 'entry3.css'
+    const options = {
+      from: '/assets/',
+      to: '/dir/images/',
+    }
+    process.env.NODE_ENV = undefined
+    process.env.WEBPACK_MODE = undefined
+
+    const stats = await compiler(fixture, options)
+    const output = stats.toJson().modules[0].source
+
+    expect(output).toContain('/assets/')
+    expect(output).not.toContain('/dir/images/')
+  })
+
+  test('should not transform urls when env is not production', async () => {
+    const fixture = 'entry3.css'
+    const options = {
+      from: '/assets/',
+      to: '/dir/images/',
+    }
+    process.env.NODE_ENV = 'development'
+    // process.env.WEBPACK_MODE = 'development'
+
+    const stats = await compiler(fixture, options)
+    const output = stats.toJson().modules[0].source
+
+    expect(output).toContain('/assets/')
+    expect(output).not.toContain('/dir/images/')
+  })
+
+  test('should not transform urls when mode is not production', async () => {
+    const fixture = 'entry3.css'
+    const options = {
+      from: '/assets/',
+      to: '/dir/images/',
+    }
+    // process.env.NODE_ENV = 'development'
+    process.env.WEBPACK_MODE = 'development'
+
+    const stats = await compiler(fixture, options)
+    const output = stats.toJson().modules[0].source
+
+    expect(output).toContain('/assets/')
+    expect(output).not.toContain('/dir/images/')
+  })
+
+  test('should throw error when both from and to options are empty', () => {
+    const fixture = 'entry3.css'
+    const options = {
+      from: '',
+      to: '',
+    }
+    process.env.NODE_ENV = 'production'
+    // process.env.WEBPACK_MODE = 'production'
+
+    return expect(compiler(fixture, options)).rejects.toThrow("Must set 'from' and 'to' options!")
+  })
+
+  test('should throw error when a from is not url', () => {
+    const fixture = 'entry3.css'
+    const options = {
+      from: '*.jpg',
+      to: '/images/image.jpg',
+    }
+    process.env.NODE_ENV = 'production'
+    // process.env.WEBPACK_MODE = 'production'
+
+    return expect(compiler(fixture, options)).rejects.toThrow('Cannot transform *.jpg to /images/image.jpg!')
   })
 })

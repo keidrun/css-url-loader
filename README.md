@@ -1,6 +1,6 @@
 # css-url-loader
 
-[![NPM version][npm-image]][npm-url] [![npm module downloads][npm-downloads-image]][npm-downloads-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][depstat-image]][depstat-url] [![License: MIT][license-image]][license-url]
+[![NPM version][npm-image]][npm-url] [![npm module downloads][npm-downloads-image]][npm-downloads-url] [![Build Status][travis-image]][travis-url] [![Coverage][codecov-image]][codecov-url] [![Dependency Status][depstat-image]][depstat-url] [![License: MIT][license-image]][license-url]
 
 Webpack loader to transform URLs to other URLs in CSS.
 
@@ -135,6 +135,8 @@ module.exports = {
 [npm-downloads-image]: https://img.shields.io/npm/dt/css-url-loader.svg
 [travis-url]: https://travis-ci.org/keidrun/css-url-loader
 [travis-image]: https://secure.travis-ci.org/keidrun/css-url-loader.svg?branch=master
+[codecov-url]: https://codecov.io/gh/keidrun/css-url-loader
+[codecov-image]: https://codecov.io/gh/keidrun/css-url-loader/branch/master/graph/badge.svg
 [depstat-url]: https://david-dm.org/keidrun/css-url-loader
 [depstat-image]: https://david-dm.org/keidrun/css-url-loader.svg
 [license-url]: https://opensource.org/licenses/MIT

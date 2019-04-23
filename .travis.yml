@@ -2,6 +2,14 @@ language: node_js
 node_js:
   - 8
 
+install:
+  - yarn install
+  - yarn add global codecov
+
+script:
+  - yarn test
+  - codecov
+
 before_deploy:
   - yarn build
 

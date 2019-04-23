@@ -1,27 +1,6 @@
 import { getOptions } from 'loader-utils'
 import validateOptions from 'schema-utils'
-import { URL } from 'url'
-
-const isURLInstance = str => {
-  try {
-    // eslint-disable-next-line no-new
-    new URL(str)
-    return true
-  } catch (err) {
-    return false
-  }
-}
-const isURL = str => {
-  if (
-    isURLInstance(str) ||
-    isURLInstance(`http:/${str}`) ||
-    isURLInstance(`http://${str}`) ||
-    isURLInstance(`http:/${str.replace('./', '/')}`)
-  ) {
-    return true
-  }
-  return false
-}
+import { isUrl } from './utils'
 
 function processSource(source, options = {}) {
   const fromURL = options.from
@@ -33,18 +12,19 @@ function processSource(source, options = {}) {
 
   if (!fromURL || !toURL) {
     throw new Error(`Must set 'from' and 'to' options!`)
-  } else if (!isURL(fromURL) || !isURL(toURL)) {
+  } else if (!isUrl(fromURL) || !isUrl(toURL)) {
     throw new Error(`Cannot transform ${options.from} to ${options.to}!`)
   }
 
   if (NODE_ENV === env || WEBPACK_MODE === mode) {
-    const escapedFromURL = fromURL.replace(/\//g, '\\/')
-    const newSource = source
-      .replace(new RegExp(`url\\(\\s*${escapedFromURL}`, 'g'), `url(${toURL}`)
-      .replace(new RegExp(`url\\(\\s*'${escapedFromURL}`, 'g'), `url('${toURL}`)
-      .replace(new RegExp(`url\\(\\s*"${escapedFromURL}`, 'g'), `url("${toURL}`)
+    const regex = new RegExp(`url\\(\\s*${fromURL.replace(/\//g, '\\/')}`, 'g')
+    const regexWithSingleQuotes = new RegExp(`url\\(\\s*'${fromURL.replace(/\//g, '\\/')}`, 'g')
+    const regexWithDoubleQuotes = new RegExp(`url\\(\\s*"${fromURL.replace(/\//g, '\\/')}`, 'g')
 
-    return newSource
+    return source
+      .replace(regex, `url(${toURL}`)
+      .replace(regexWithSingleQuotes, `url('${toURL}`)
+      .replace(regexWithDoubleQuotes, `url("${toURL}`)
   }
   return source
 }
