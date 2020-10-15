@@ -4,7 +4,7 @@
   "description": "Webpack loader to transform URLs to other URLs in CSS.",
   "main": "build/loader.js",
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=10.0.0"
   },
   "repository": "git@github.com:keidrun/css-url-loader.git",
   "author": "keidrun",
@@ -60,9 +60,6 @@
     "prettier": "^2.1.2",
     "rimraf": "^3.0.2",
     "webpack": "^5.1.0"
-  },
-  "peerDependencies": {
-    "webpack": "^4.30.0"
   },
   "config": {
     "commitizen": {
