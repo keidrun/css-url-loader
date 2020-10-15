@@ -1,6 +1,8 @@
 language: node_js
 node_js:
-  - 8
+  - 10
+  - 12
+  - 14
 
 install:
   - yarn install
@@ -10,16 +12,16 @@ script:
   - yarn test
   - codecov
 
-before_deploy:
-  - yarn build
-
-deploy:
-  provider: npm
-  skip_cleanup: true
-  email: "$NPM_EMAIL"
-  api_key: "$NPM_TOKEN"
-  on:
-    tags: true
-
-after_deploy:
-  - test ! -e /home/travis/.npm/_logs ; TRAVIS_TEST_RESULT=$?
+jobs:
+  include:
+    - stage: release
+      node_js: lts/*
+      before_deploy:
+        - yarn build
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script:
+          - yarn semantic-release
+      after_deploy:
+        - test ! -e /home/travis/.npm/_logs ; TRAVIS_TEST_RESULT=$?
