@@ -1,13 +1,13 @@
 import path from 'path'
 import webpack from 'webpack'
-import Memoryfs from 'memory-fs'
+import { createFsFromVolume, Volume } from 'memfs'
 
 export default (fixture, options = {}) => {
   const compiler = webpack({
     context: __dirname,
     entry: `./source/${fixture}`,
     output: {
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname),
       filename: 'bundle.js',
     },
     module: {
@@ -15,7 +15,12 @@ export default (fixture, options = {}) => {
         {
           test: /\.css$/,
           use: [
-            'css-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                url: false, // leaflet uses relative paths
+              },
+            },
             {
               loader: path.resolve(__dirname, '../src/loader.js'),
               options,
@@ -26,7 +31,8 @@ export default (fixture, options = {}) => {
     },
   })
 
-  compiler.outputFileSystem = new Memoryfs()
+  compiler.outputFileSystem = createFsFromVolume(new Volume())
+  compiler.outputFileSystem.join = path.join.bind(path)
 
   return new Promise((resolve, reject) => {
     compiler.run((err, stats) => {

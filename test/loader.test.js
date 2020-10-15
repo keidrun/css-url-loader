@@ -17,7 +17,7 @@ describe('loader', () => {
     // process.env.WEBPACK_MODE = 'production'
 
     const stats = await compiler(fixture, options)
-    const output = stats.toJson().modules[0].source
+    const output = stats.toJson({ source: true }).modules[0].source
 
     expect(output).toContain('https://domain/assets/')
   })
@@ -33,7 +33,7 @@ describe('loader', () => {
     process.env.WEBPACK_MODE = 'production'
 
     const stats = await compiler(fixture, options)
-    const output = stats.toJson().modules[0].source
+    const output = stats.toJson({ source: true }).modules[0].source
 
     expect(output).toContain('https://domain/assets/')
   })
@@ -48,7 +48,7 @@ describe('loader', () => {
     // process.env.WEBPACK_MODE = 'production'
 
     const stats = await compiler(fixture, options)
-    const output = stats.toJson().modules[0].source
+    const output = stats.toJson({ source: true }).modules[0].source
 
     expect(output).toContain("'https://domain/assets/")
   })
@@ -63,7 +63,7 @@ describe('loader', () => {
     process.env.WEBPACK_MODE = 'production'
 
     const stats = await compiler(fixture, options)
-    const output = stats.toJson().modules[0].source
+    const output = stats.toJson({ source: true }).modules[0].source
 
     expect(output).toContain("'https://domain/assets/")
   })
@@ -79,7 +79,7 @@ describe('loader', () => {
     // process.env.WEBPACK_MODE = 'production'
 
     const stats = await compiler(fixture, options)
-    const output = stats.toJson().modules[0].source
+    const output = stats.toJson({ source: true }).modules[0].source
 
     expect(output).toContain('/dir/assets/')
   })
@@ -95,7 +95,7 @@ describe('loader', () => {
     process.env.WEBPACK_MODE = 'production'
 
     const stats = await compiler(fixture, options)
-    const output = stats.toJson().modules[0].source
+    const output = stats.toJson({ source: true }).modules[0].source
 
     expect(output).toContain('/dir/assets/')
   })
@@ -110,7 +110,7 @@ describe('loader', () => {
     // process.env.WEBPACK_MODE = 'production'
 
     const stats = await compiler(fixture, options)
-    const output = stats.toJson().modules[0].source
+    const output = stats.toJson({ source: true }).modules[0].source
 
     expect(output).toContain("'/dir/assets/")
   })
@@ -125,7 +125,7 @@ describe('loader', () => {
     process.env.WEBPACK_MODE = 'production'
 
     const stats = await compiler(fixture, options)
-    const output = stats.toJson().modules[0].source
+    const output = stats.toJson({ source: true }).modules[0].source
 
     expect(output).toContain("'/dir/assets/")
   })
@@ -141,7 +141,7 @@ describe('loader', () => {
     // process.env.WEBPACK_MODE = 'development'
 
     const stats = await compiler(fixture, options)
-    const output = stats.toJson().modules[0].source
+    const output = stats.toJson({ source: true }).modules[0].source
 
     expect(output).toContain('/dir/assets/')
   })
@@ -157,7 +157,7 @@ describe('loader', () => {
     process.env.WEBPACK_MODE = 'development'
 
     const stats = await compiler(fixture, options)
-    const output = stats.toJson().modules[0].source
+    const output = stats.toJson({ source: true }).modules[0].source
 
     expect(output).toContain('/dir/assets/')
   })
@@ -173,7 +173,7 @@ describe('loader', () => {
     process.env.WEBPACK_MODE = 'development'
 
     const stats = await compiler(fixture, options)
-    const output = stats.toJson().modules[0].source
+    const output = stats.toJson({ source: true }).modules[0].source
 
     expect(output).toContain('/dir/assets/')
   })
@@ -189,7 +189,7 @@ describe('loader', () => {
     process.env.WEBPACK_MODE = 'development'
 
     const stats = await compiler(fixture, options)
-    const output = stats.toJson().modules[0].source
+    const output = stats.toJson({ source: true }).modules[0].source
 
     expect(output).toContain('/dir/assets/')
   })
@@ -204,7 +204,7 @@ describe('loader', () => {
     // process.env.WEBPACK_MODE = 'production'
 
     const stats = await compiler(fixture, options)
-    const output = stats.toJson().modules[0].source
+    const output = stats.toJson({ source: true }).modules[0].source
 
     expect(output).toContain('/dir/assets/')
   })
@@ -219,7 +219,7 @@ describe('loader', () => {
     process.env.WEBPACK_MODE = undefined
 
     const stats = await compiler(fixture, options)
-    const output = stats.toJson().modules[0].source
+    const output = stats.toJson({ source: true }).modules[0].source
 
     expect(output).toContain('/assets/')
     expect(output).not.toContain('/dir/images/')
@@ -235,7 +235,7 @@ describe('loader', () => {
     // process.env.WEBPACK_MODE = 'development'
 
     const stats = await compiler(fixture, options)
-    const output = stats.toJson().modules[0].source
+    const output = stats.toJson({ source: true }).modules[0].source
 
     expect(output).toContain('/assets/')
     expect(output).not.toContain('/dir/images/')
@@ -251,13 +251,13 @@ describe('loader', () => {
     process.env.WEBPACK_MODE = 'development'
 
     const stats = await compiler(fixture, options)
-    const output = stats.toJson().modules[0].source
+    const output = stats.toJson({ source: true }).modules[0].source
 
     expect(output).toContain('/assets/')
     expect(output).not.toContain('/dir/images/')
   })
 
-  test('should throw error when both from and to options are empty', () => {
+  test('should throw error when both from and to options are empty', async () => {
     const fixture = 'entry3.css'
     const options = {
       from: '',
@@ -266,7 +266,7 @@ describe('loader', () => {
     process.env.NODE_ENV = 'production'
     // process.env.WEBPACK_MODE = 'production'
 
-    return expect(compiler(fixture, options)).rejects.toThrow("Must set 'from' and 'to' options!")
+    return expect(compiler(fixture, options)).rejects.toThrow(Error)
   })
 
   test('should throw error when a from is not url', () => {
@@ -278,6 +278,6 @@ describe('loader', () => {
     process.env.NODE_ENV = 'production'
     // process.env.WEBPACK_MODE = 'production'
 
-    return expect(compiler(fixture, options)).rejects.toThrow('Cannot transform *.jpg to /images/image.jpg!')
+    return expect(compiler(fixture, options)).rejects.toThrow(Error)
   })
 })

@@ -1,5 +1,5 @@
 import { getOptions } from 'loader-utils'
-import validateOptions from 'schema-utils'
+import { validate } from 'schema-utils'
 import { isUrl } from './utils'
 
 function processSource(source, options = {}) {
@@ -26,6 +26,7 @@ function processSource(source, options = {}) {
       .replace(regexWithSingleQuotes, `url('${toURL}`)
       .replace(regexWithDoubleQuotes, `url("${toURL}`)
   }
+
   return source
 }
 
@@ -49,9 +50,11 @@ const schema = {
 
 export default function loader(source) {
   const options = getOptions(this)
-  validateOptions(schema, options, 'css-url-loader')
 
-  const processedSource = processSource(source, options)
+  validate(schema, options, {
+    name: 'Css Url Loader',
+    baseDataPath: 'options',
+  })
 
-  return processedSource
+  return `export default ${processSource(source, options)}`
 }

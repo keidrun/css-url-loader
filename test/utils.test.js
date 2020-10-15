@@ -29,13 +29,13 @@ describe('isUrl function', () => {
   const wrongUrls = [undefined, null, '', 12345, '\\images', '*images', ';images', ':images', '<images', '>images']
 
   test('should return true when a url is correct', () => {
-    correctUrls.forEach(url => {
+    correctUrls.forEach((url) => {
       expect(isUrl(url)).toBe(true)
     })
   })
 
   test('should return false when a url is worng', () => {
-    wrongUrls.forEach(url => {
+    wrongUrls.forEach((url) => {
       expect(isUrl(url)).toBe(false)
     })
   })
