@@ -19,13 +19,18 @@
     "relative-url",
     "absolute-url"
   ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "src/**/**.js": [
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ]
   },
   "scripts": {
+    "cm": "cz",
     "clean": "rimraf build",
     "prebuild": "yarn clean",
     "build": "babel src --out-dir build",
@@ -41,6 +46,7 @@
     "@babel/preset-env": "^7.12.0",
     "babel-jest": "^26.5.2",
     "css-loader": "^5.0.0",
+    "cz-conventional-changelog": "3.3.0",
     "eslint": "^7.11.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.12.0",
@@ -57,5 +63,10 @@
   },
   "peerDependencies": {
     "webpack": "^4.30.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
