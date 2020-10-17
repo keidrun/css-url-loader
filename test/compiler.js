@@ -37,7 +37,7 @@ export default (fixture, options = {}) => {
   return new Promise((resolve, reject) => {
     compiler.run((err, stats) => {
       if (err) reject(err)
-      if (stats.hasErrors()) reject(new Error(stats.toJson().errors))
+      if (stats.hasErrors()) reject(stats.toJson().errors[0].message)
 
       resolve(stats)
     })

@@ -266,10 +266,10 @@ describe('loader', () => {
     process.env.NODE_ENV = 'production'
     // process.env.WEBPACK_MODE = 'production'
 
-    return expect(compiler(fixture, options)).rejects.toThrow(Error)
+    return expect(compiler(fixture, options)).rejects.toContain("Must set 'from' and 'to' options!")
   })
 
-  test('should throw error when a from is not url', () => {
+  test('should throw error when a from is not url', async () => {
     const fixture = 'entry3.css'
     const options = {
       from: '*.jpg',
@@ -278,6 +278,6 @@ describe('loader', () => {
     process.env.NODE_ENV = 'production'
     // process.env.WEBPACK_MODE = 'production'
 
-    return expect(compiler(fixture, options)).rejects.toThrow(Error)
+    return expect(compiler(fixture, options)).rejects.toContain('Cannot transform *.jpg to /images/image.jpg!')
   })
 })
