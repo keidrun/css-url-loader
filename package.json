@@ -38,7 +38,7 @@
     "watch": "jest --watchAll --coverage"
   },
   "dependencies": {
-    "loader-utils": "^2.0.2",
+    "loader-utils": "^2.0.3",
     "schema-utils": "^3.1.1"
   },
   "devDependencies": {
