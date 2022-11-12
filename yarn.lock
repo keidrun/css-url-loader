@@ -2287,6 +2287,11 @@ big.js@^5.2.2:
   resolved "https://registry.yarnpkg.com/big.js/-/big.js-5.2.2.tgz#65f0af382f578bcdc742bd9c281e9cb2d7768328"
   integrity sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==
 
+big.js@^6.1.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/big.js/-/big.js-6.2.1.tgz#7205ce763efb17c2e41f26f121c420c6a7c2744f"
+  integrity sha512-bCtHMwL9LeDIozFn+oNhhFoq+yQ3BNdnsLSASUxLciOb1vgvpHsIO1dsENiGMgbb4SkP5TrzWzRiLddn8ahVOQ==
+
 bin-links@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/bin-links/-/bin-links-3.0.1.tgz#cc70ffb481988b22c527d3e6e454787876987a49"
@@ -5625,14 +5630,12 @@ loader-utils@^2.0.0:
     emojis-list "^3.0.0"
     json5 "^2.1.2"
 
-loader-utils@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-2.0.3.tgz#d4b15b8504c63d1fc3f2ade52d41bc8459d6ede1"
-  integrity sha512-THWqIsn8QRnvLl0shHYVBN9syumU8pYWEHPTmkiVGd+7K5eFNVSY6AJhRvgGF70gg1Dz+l/k8WicvFCxdEs60A==
+loader-utils@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-3.0.0.tgz#dfcd9d1101bc4512d4956e1d5d67577c647b47fe"
+  integrity sha512-ry4RE7qen73BFLgihlbyllGIW9SVWLUD5Cq9VWtzrqhntOMOJl8yEjA89d5mCUTT0puCnHo4EecO6bz+BOAS8w==
   dependencies:
-    big.js "^5.2.2"
-    emojis-list "^3.0.0"
-    json5 "^2.1.2"
+    big.js "^6.1.1"
 
 locate-path@^2.0.0:
   version "2.0.0"
